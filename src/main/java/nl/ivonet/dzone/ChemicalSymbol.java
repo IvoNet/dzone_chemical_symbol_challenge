@@ -22,6 +22,8 @@ import java.util.TreeSet;
 
 /**
  * Checks if symbols are valid in the Splurth periodic table of elements.
+ * <p>
+ * <a href="https://dzone.com/articles/java-code-challenge-chemical-symbol-naming-part-on">D-Zone</a>
  */
 public class ChemicalSymbol {
 
