@@ -11,6 +11,7 @@ public class ChemicalSymbol {
 
     /**
      * All chemical symbols must be exactly two letters, so B is not a valid symbol for Boron.
+     * The first letter must be a capital cased letter
      *
      * @param symbol the symbol to validate against the business rule
      * @return true if valid else false
@@ -20,6 +21,7 @@ public class ChemicalSymbol {
     }
 
     /**
+     * Validates a symbol given the following rulez:
      * <ul>
      * <li>
      * Both letters in the proposedSymbol must appear in the elementName name, but the first letter of the elementName
@@ -95,6 +97,7 @@ public class ChemicalSymbol {
 
     private Set<String> possibleSymbols(final String elementName) {
         final Set<String> symbols = new TreeSet<>();
+
         for (int i = 1; i < elementName.length(); i++) {
             final String element = elementName.toLowerCase();
             final String firstChar = String.valueOf(element.charAt(i - 1))

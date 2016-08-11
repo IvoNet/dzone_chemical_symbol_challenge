@@ -62,6 +62,14 @@ public class ChemicalSymbolTest {
 
     }
 
+    /**
+     * Bonus Challenge 1
+     * <p>
+     * Given an element name, find the valid symbol for that name that's first in alphabetical order.
+     * E.g.
+     * Gozerium -> Ei
+     * Slimyrine -> Ie
+     */
     @Test
     public void testFirstAlfabeticalSymbol() throws Exception {
         assertThat(chemicalSymbol.firstSymbolAlphabeticaly("Gozerium"), is("Ei"));
@@ -70,10 +78,17 @@ public class ChemicalSymbolTest {
         assertThat(chemicalSymbol.firstSymbolAlphabeticaly("Aa"), is("Aa"));
     }
 
+    /**
+     * Bonus Challenge 2
+     * <p>
+     * Given an element name, find the number of distinct valid symbols for that name.
+     * E.g. Zuulon -> 11
+     */
     @Test
     public void testAllPossibleCombinationsInElement() throws Exception {
         assertThat(chemicalSymbol.numberOfDistinctSymbols("Zuulon"), is(11));
         assertThat(chemicalSymbol.numberOfDistinctSymbols("aa"), is(1));
         assertThat(chemicalSymbol.numberOfDistinctSymbols("Gozerium"), is(28));
     }
+
 }
