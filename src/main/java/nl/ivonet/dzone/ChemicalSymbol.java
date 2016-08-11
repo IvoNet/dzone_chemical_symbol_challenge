@@ -67,9 +67,8 @@ public class ChemicalSymbol {
      * @return the alphabetically first symbol
      */
     public String firstSymbolAlphabeticaly(final String elementName) {
-        if (!validElement(elementName)) {
-            throw new IllegalStateException("Element must be provided and at least two chars long");
-        }
+        validateElement(elementName);
+
         final String element = elementName.toLowerCase();
 
         final char[] sortedChars = sortedChars(element);
@@ -80,7 +79,7 @@ public class ChemicalSymbol {
             firstChar = String.valueOf(sortedChars[1]);
         }
 
-        final char[] lettersInElementAfterFirstChar = sortedChars(restOfElement(element, firstChar));
+        final char[] lettersInElementAfterFirstChar = sortedChars(rightOfFirstChar(element, firstChar));
         return firstChar.toUpperCase() + lettersInElementAfterFirstChar[0];
     }
 
@@ -96,6 +95,8 @@ public class ChemicalSymbol {
     }
 
     private Set<String> possibleSymbols(final String elementName) {
+        validateElement(elementName);
+
         final Set<String> symbols = new TreeSet<>();
 
         for (int i = 1; i < elementName.length(); i++) {
@@ -110,15 +111,15 @@ public class ChemicalSymbol {
         return symbols;
     }
 
-    private boolean firstCharBeforeSecond(final int one, final int two) {
-        return one < two;
+    private boolean firstCharBeforeSecond(final int first, final int second) {
+        return first < second;
     }
 
     private boolean existsInElement(final int result) {
         return result >= 0;
     }
 
-    private String restOfElement(final String element, final String firstChar) {
+    private String rightOfFirstChar(final String element, final String firstChar) {
         return element.substring(element.indexOf(firstChar) + 1);
     }
 
@@ -130,6 +131,12 @@ public class ChemicalSymbol {
 
     private boolean firstAphabeticallyIsLastLetterInElement(final String element, final String firstChar) {
         return element.indexOf(firstChar) == (element.length() - 1);
+    }
+
+    private void validateElement(final String elementName) {
+        if (!validElement(elementName)) {
+            throw new IllegalStateException("Element must be provided and at least two chars long");
+        }
     }
 
     public boolean validElement(final String elementName) {

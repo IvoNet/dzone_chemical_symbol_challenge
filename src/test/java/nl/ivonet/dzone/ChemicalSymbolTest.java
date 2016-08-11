@@ -87,8 +87,9 @@ public class ChemicalSymbolTest {
     @Test
     public void testAllPossibleCombinationsInElement() throws Exception {
         assertThat(chemicalSymbol.numberOfDistinctSymbols("Zuulon"), is(11));
-        assertThat(chemicalSymbol.numberOfDistinctSymbols("aa"), is(1));
+        assertThat(chemicalSymbol.numberOfDistinctSymbols("Aa"), is(1));
         assertThat(chemicalSymbol.numberOfDistinctSymbols("Gozerium"), is(28));
+        assertThat(chemicalSymbol.numberOfDistinctSymbols("Ab"), is(1));
     }
 
 }
