@@ -69,4 +69,11 @@ public class ChemicalSymbolTest {
         assertThat(chemicalSymbol.firstSymbolAlphabeticaly("Aaaaa"), is("Aa"));
         assertThat(chemicalSymbol.firstSymbolAlphabeticaly("Aa"), is("Aa"));
     }
+
+    @Test
+    public void testAllPossibleCombinationsInElement() throws Exception {
+        assertThat(chemicalSymbol.numberOfDistinctSymbols("Zuulon"), is(11));
+        assertThat(chemicalSymbol.numberOfDistinctSymbols("aa"), is(1));
+        assertThat(chemicalSymbol.numberOfDistinctSymbols("Gozerium"), is(28));
+    }
 }

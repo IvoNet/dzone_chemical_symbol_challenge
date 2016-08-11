@@ -1,6 +1,8 @@
 package nl.ivonet.dzone;
 
 import java.util.Arrays;
+import java.util.Set;
+import java.util.TreeSet;
 
 /**
  * Checks if symbols are valid in the Splurth periodic table of elements.
@@ -53,14 +55,6 @@ public class ChemicalSymbol {
         return existsInElement(one) && existsInElement(two) && firstCharBeforeSecond(one, two);
     }
 
-    private boolean firstCharBeforeSecond(final int one, final int two) {
-        return one < two;
-    }
-
-    private boolean existsInElement(final int result) {
-        return result >= 0;
-    }
-
     /**
      * Given an element name, find the valid symbol for that name that's first in alphabetical order.
      * E.g.
@@ -86,6 +80,39 @@ public class ChemicalSymbol {
 
         final char[] lettersInElementAfterFirstChar = sortedChars(restOfElement(element, firstChar));
         return firstChar.toUpperCase() + lettersInElementAfterFirstChar[0];
+    }
+
+    /**
+     * Given an element name, find the number of distinct valid symbols for that name.
+     * E.g. Zuulon -> 11
+     *
+     * @param elementName the element to get the count from
+     * @return the number of distinct valid symbols
+     */
+    public int numberOfDistinctSymbols(final String elementName) {
+        return possibleSymbols(elementName).size();
+    }
+
+    private Set<String> possibleSymbols(final String elementName) {
+        final Set<String> symbols = new TreeSet<>();
+        for (int i = 1; i < elementName.length(); i++) {
+            final String element = elementName.toLowerCase();
+            final String firstChar = String.valueOf(element.charAt(i - 1))
+                                           .toUpperCase();
+            element.substring(i)
+                   .chars()
+                   .mapToObj(ch -> firstChar + (char) ch)
+                   .forEach(symbols::add);
+        }
+        return symbols;
+    }
+
+    private boolean firstCharBeforeSecond(final int one, final int two) {
+        return one < two;
+    }
+
+    private boolean existsInElement(final int result) {
+        return result >= 0;
     }
 
     private String restOfElement(final String element, final String firstChar) {
