@@ -41,20 +41,16 @@ public class ChemicalSymbol {
      * <ul>
      * <li>
      * Both letters in the proposedSymbol must appear in the elementName name, but the first letter of the elementName
-     * name does not
-     * necessarily need to appear in the proposedSymbol. So Hg is not valid for Mercury, but Cy is.
+     * name does not necessarily need to appear in the proposedSymbol. So Hg is not valid for Mercury, but Cy is.
      * </li>
      * <li>
      * The two letters must appear in order in the elementName name. So Vr is valid for Silver, but Rv is not. To be
-     * clear,
-     * both Ma and Am are valid for Magnesium, because there is both an a that appears after an m, and an m that
-     * appears
-     * after an a.
+     * clear, both Ma and Am are valid for Magnesium, because there is both an a that appears after an m, and an m that
+     * appears after an a.
      * </li>
      * <li>
      * If the two letters in the proposedSymbol are the same, it must appear twice in the elementName name. So Nn is
-     * valid for
-     * Xenon, but Xx and Oo are not.
+     * valid for Xenon, but Xx and Oo are not.
      * </li>
      * </ul>
      *
