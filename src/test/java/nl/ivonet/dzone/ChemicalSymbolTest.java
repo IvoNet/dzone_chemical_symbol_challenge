@@ -3,7 +3,9 @@ package nl.ivonet.dzone;
 import org.junit.Before;
 import org.junit.Test;
 
+import static org.hamcrest.core.Is.is;
 import static org.junit.Assert.assertFalse;
+import static org.junit.Assert.assertThat;
 import static org.junit.Assert.assertTrue;
 
 /**
@@ -46,5 +48,25 @@ public class ChemicalSymbolTest {
         assertFalse(chemicalSymbol.validSymbol("Mercury", "Hg"));
         assertTrue(chemicalSymbol.validSymbol("Mercury", "Cy"));
         assertTrue(chemicalSymbol.validSymbol("Xenon", "Nn"));
+    }
+
+    @Test(expected = IllegalStateException.class)
+    public void elementMustBeProvidedWhenAskingForSymbol() throws Exception {
+        chemicalSymbol.firstSymbolAlphabeticaly(null);
+    }
+
+    @Test
+    public void validElementNameShouldBeLongerThanOneLetter() throws Exception {
+        assertTrue(chemicalSymbol.validElement("Boron"));
+        assertFalse(chemicalSymbol.validElement("B"));
+
+    }
+
+    @Test
+    public void testFirstAlfabeticalSymbol() throws Exception {
+        assertThat(chemicalSymbol.firstSymbolAlphabeticaly("Gozerium"), is("Ei"));
+        assertThat(chemicalSymbol.firstSymbolAlphabeticaly("Slimyrine"), is("Ie"));
+        assertThat(chemicalSymbol.firstSymbolAlphabeticaly("Aaaaa"), is("Aa"));
+        assertThat(chemicalSymbol.firstSymbolAlphabeticaly("Aa"), is("Aa"));
     }
 }
