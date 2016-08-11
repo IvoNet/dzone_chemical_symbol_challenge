@@ -60,6 +60,12 @@ public class ChemicalSymbolTest {
         assertTrue(chemicalSymbol.validSymbol("Boron", "Oo"));
         assertTrue(chemicalSymbol.validSymbol("Boron", "On"));
         assertTrue(chemicalSymbol.validSymbol("Boron", "Or"));
+        assertTrue(chemicalSymbol.validSymbol("Spenglerium", "Ee"));
+        assertTrue(chemicalSymbol.validSymbol("Zeddemorium", "Zr"));
+        assertTrue(chemicalSymbol.validSymbol("Venkmine", "Kn"));
+        assertFalse(chemicalSymbol.validSymbol("Stantzon", "Zt"));
+        assertFalse(chemicalSymbol.validSymbol("Melintzum", "Nn"));
+        assertFalse(chemicalSymbol.validSymbol("Tullium", "Ty"));
         assertFalse(chemicalSymbol.validSymbol("Boron", "No"));
         assertFalse(chemicalSymbol.validSymbol("Mercury", "Hg"));
         assertTrue(chemicalSymbol.validSymbol("Mercury", "Cy"));
@@ -103,9 +109,10 @@ public class ChemicalSymbolTest {
     @Test
     public void testAllPossibleCombinationsInElement() throws Exception {
         assertThat(chemicalSymbol.numberOfDistinctSymbols("Zuulon"), is(11));
-        assertThat(chemicalSymbol.numberOfDistinctSymbols("Aa"), is(1));
+        assertThat(chemicalSymbol.numberOfDistinctSymbols("Aaa"), is(1));
         assertThat(chemicalSymbol.numberOfDistinctSymbols("Gozerium"), is(28));
         assertThat(chemicalSymbol.numberOfDistinctSymbols("Ab"), is(1));
+        assertThat(chemicalSymbol.numberOfDistinctSymbols("Tullium"), is(14));
     }
 
 }
