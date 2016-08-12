@@ -18,6 +18,7 @@ package nl.ivonet.dzone;
 
 import java.util.Arrays;
 import java.util.Set;
+import java.util.SortedSet;
 import java.util.TreeSet;
 
 /**
@@ -113,7 +114,7 @@ public class ChemicalSymbol {
 
         final String element = elementName.toLowerCase();
 
-        final Set<String> symbols = new TreeSet<>();
+        final SortedSet<String> symbols = new TreeSet<>();
         for (int i = 1; i < elementName.length(); i++) {
             final String firstChar = String.valueOf(element.charAt(i - 1))
                                            .toUpperCase();
