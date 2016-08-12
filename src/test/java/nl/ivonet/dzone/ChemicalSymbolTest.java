@@ -46,6 +46,7 @@ public class ChemicalSymbolTest {
         assertFalse(chemicalSymbol.validFormat("aa"));
         assertFalse(chemicalSymbol.validFormat("Aaa"));
         assertFalse(chemicalSymbol.validFormat(null));
+        assertFalse(chemicalSymbol.validFormat("true"));
     }
 
     @Test
@@ -72,7 +73,7 @@ public class ChemicalSymbolTest {
         assertTrue(chemicalSymbol.validSymbol("Xenon", "Nn"));
     }
 
-    @Test(expected = IllegalStateException.class)
+    @Test(expected = IllegalArgumentException.class)
     public void elementMustBeProvidedWhenAskingForSymbol() throws Exception {
         chemicalSymbol.firstSymbolAlphabeticaly(null);
     }
@@ -81,6 +82,7 @@ public class ChemicalSymbolTest {
     public void validElementNameShouldBeLongerThanOneLetter() throws Exception {
         assertTrue(chemicalSymbol.validElement("Boron"));
         assertFalse(chemicalSymbol.validElement("B"));
+        assertFalse(chemicalSymbol.validElement("true"));
 
     }
 

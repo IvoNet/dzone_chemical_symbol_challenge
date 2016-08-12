@@ -16,9 +16,9 @@
 
 package nl.ivonet.dzone;
 
-import java.util.Arrays;
 import java.util.SortedSet;
 import java.util.TreeSet;
+import java.util.regex.Pattern;
 
 /**
  * Checks if symbols are valid in the Splurth periodic table of elements.
@@ -26,6 +26,9 @@ import java.util.TreeSet;
  * <a href="https://dzone.com/articles/java-code-challenge-chemical-symbol-naming-part-on">D-Zone</a>
  */
 public class ChemicalSymbol {
+
+    private static final Pattern TWO_LETTERS = Pattern.compile("[A-Z][a-z]");
+    private static final Pattern ELEMENT_NAME = Pattern.compile("[A-Z][a-z]+");
 
     /**
      * All chemical symbols must be exactly two letters, so B is not a valid symbol for Boron.
@@ -35,7 +38,7 @@ public class ChemicalSymbol {
      * @return true if valid else false
      */
     public boolean validFormat(final String symbol) {
-        return (symbol != null) && "true".equals(symbol.replaceAll("[A-Z][a-z]", "true"));
+        return (symbol != null) && exactlyTwoCharactersCamelCased(symbol);
     }
 
     /**
@@ -111,7 +114,6 @@ public class ChemicalSymbol {
         return possibleSymbolsBruteForce(elementName).size();
     }
 
-
     /*
      * Brute force version for getting all possible combinations of symbols in an element.
      * Just try all permutations of two letters against the validSymbol method.
@@ -130,6 +132,7 @@ public class ChemicalSymbol {
         }
         return symbols;
     }
+
 
     /*
      * More optimized version of getting all possible combinations of symbols in an element.
@@ -162,27 +165,21 @@ public class ChemicalSymbol {
         return result >= 0;
     }
 
-    private String rightOfFirstChar(final String element, final String firstChar) {
-        return element.substring(element.indexOf(firstChar) + 1);
-    }
-
-    private char[] sortedChars(final String element) {
-        final char[] allLettersInElement = element.toCharArray();
-        Arrays.sort(allLettersInElement);
-        return allLettersInElement;
-    }
-
-    private boolean firstAphabeticallyIsLastLetterInElement(final String element, final String firstChar) {
-        return element.indexOf(firstChar) == (element.length() - 1);
-    }
-
     private void validateElement(final String elementName) {
         if (!validElement(elementName)) {
-            throw new IllegalStateException("Element must be provided and at least two chars long");
+            throw new IllegalArgumentException("Element must be provided and at least two chars long");
         }
     }
 
     public boolean validElement(final String elementName) {
-        return (elementName != null) && "true".equals(elementName.replaceAll("[A-Z][a-z]+", "true"));
+        return (elementName != null) && camelCasedWordOfAtLeastTwoCharacters(elementName);
+    }
+
+    private boolean exactlyTwoCharactersCamelCased(final String symbol) {
+        return TWO_LETTERS.matcher(symbol).matches();
+    }
+
+    private boolean camelCasedWordOfAtLeastTwoCharacters(final String elementName) {
+        return ELEMENT_NAME.matcher(elementName).matches();
     }
 }
