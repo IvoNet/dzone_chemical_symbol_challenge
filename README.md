@@ -1,4 +1,5 @@
 [![Build Status](https://travis-ci.org/IvoNet/dzone_chemical_symbol_challenge.svg?branch=master)](https://travis-ci.org/IvoNet/dzone_chemical_symbol_challenge)
+[![Coverage Status](https://coveralls.io/repos/github/IvoNet/dzone_chemical_symbol_challenge/badge.svg)](https://coveralls.io/github/IvoNet/dzone_chemical_symbol_challenge)
 
 # DZone - Code Challenge
 
