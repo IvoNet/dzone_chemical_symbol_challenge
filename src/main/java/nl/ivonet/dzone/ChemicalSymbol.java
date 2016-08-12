@@ -111,10 +111,10 @@ public class ChemicalSymbol {
     private Set<String> possibleSymbols(final String elementName) {
         validateElement(elementName);
 
-        final Set<String> symbols = new TreeSet<>();
+        final String element = elementName.toLowerCase();
 
+        final Set<String> symbols = new TreeSet<>();
         for (int i = 1; i < elementName.length(); i++) {
-            final String element = elementName.toLowerCase();
             final String firstChar = String.valueOf(element.charAt(i - 1))
                                            .toUpperCase();
             element.substring(i)
