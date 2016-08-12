@@ -115,4 +115,19 @@ public class ChemicalSymbolTest {
         assertThat(chemicalSymbol.numberOfDistinctSymbols("Tullium"), is(14));
     }
 
+    /**
+     * Bonus Challenge 2. Brute Force way.
+     * <p>
+     * Given an element name, find the number of distinct valid symbols for that name.
+     * E.g. Zuulon -> 11
+     */
+    @Test
+    public void testAllPossibleCombinationsInElementBruteForce() throws Exception {
+        assertThat(chemicalSymbol.numberOfDistinctSymbolsBruteForce("Zuulon"), is(11));
+        assertThat(chemicalSymbol.numberOfDistinctSymbolsBruteForce("Aaa"), is(1));
+        assertThat(chemicalSymbol.numberOfDistinctSymbolsBruteForce("Gozerium"), is(28));
+        assertThat(chemicalSymbol.numberOfDistinctSymbolsBruteForce("Ab"), is(1));
+        assertThat(chemicalSymbol.numberOfDistinctSymbolsBruteForce("Tullium"), is(14));
+    }
+
 }

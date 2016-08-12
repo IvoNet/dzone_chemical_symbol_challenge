@@ -102,6 +102,8 @@ public class ChemicalSymbol {
      * Given an element name, find the number of distinct valid symbols for that name.
      * E.g. Zuulon -> 11
      *
+     * This version utilizes an optimized technique.
+     *
      * @param elementName the element to get the count from
      * @return the number of distinct valid symbols
      */
@@ -109,6 +111,46 @@ public class ChemicalSymbol {
         return possibleSymbols(elementName).size();
     }
 
+    /**
+     * Given an element name, find the number of distinct valid symbols for that name.
+     * E.g. Zuulon -> 11
+     *
+     * This version utilizes the Brute Froce technique.
+     *
+     * @param elementName the element to get the count from
+     * @return the number of distinct valid symbols
+     */
+    public int numberOfDistinctSymbolsBruteForce(final String elementName) {
+        return possibleSymbolsBruteForce(elementName).size();
+    }
+
+
+
+    /*
+     * Brute force version for getting all possible combinations of symbols in an element.
+     * Just try all permutations of two letters against the validSymbol method.
+     * The validSymbol method was already written and tested, so writing this is a no brainer.
+     * The downside is that it tries all combinations of two letters which is not very efficient.
+     */
+    private Set<String> possibleSymbolsBruteForce(final String elementName) {
+        final SortedSet<String> symbols = new TreeSet<>();
+        for (int firstLetter = 'A'; firstLetter < ('Z' + 1); firstLetter++) {
+            for (int seccondLetter = 'a'; seccondLetter < ('z' + 1); seccondLetter++) {
+                final String symbol = "" + (char) firstLetter + (char) seccondLetter;
+                if (validSymbol(elementName, symbol)) {
+                    symbols.add(symbol);
+                }
+            }
+        }
+        return symbols;
+    }
+
+    /*
+     * More optimized version of getting all possible combinations of symbols in an element.
+     * This done by making the elementName leading in getting the permutations.
+     * Downside is that it does not use already tested code.
+     * Upside is that it does only the bare minimum to get the results.
+     */
     private Set<String> possibleSymbols(final String elementName) {
         validateElement(elementName);
 
