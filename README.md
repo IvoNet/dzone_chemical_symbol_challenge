@@ -1,5 +1,4 @@
 [![Build Status](https://travis-ci.org/IvoNet/dzone_chemical_symbol_challenge.svg?branch=master)](https://travis-ci.org/IvoNet/dzone_chemical_symbol_challenge)
-[![Coverage Status](https://coveralls.io/repos/github/IvoNet/dzone_chemical_symbol_challenge/badge.svg)](https://coveralls.io/github/IvoNet/dzone_chemical_symbol_challenge)
 
 # DZone - Code Challenge
 
@@ -19,4 +18,4 @@
        distributed under the License is distributed on an "AS IS" BASIS,
        WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
        See the License for the specific language governing permissions and
-       limitations under the License.
+       
