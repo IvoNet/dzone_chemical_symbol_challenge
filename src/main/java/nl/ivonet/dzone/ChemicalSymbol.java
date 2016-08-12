@@ -17,7 +17,6 @@
 package nl.ivonet.dzone;
 
 import java.util.Arrays;
-import java.util.Set;
 import java.util.SortedSet;
 import java.util.TreeSet;
 
@@ -83,25 +82,13 @@ public class ChemicalSymbol {
      */
     public String firstSymbolAlphabeticaly(final String elementName) {
         validateElement(elementName);
-
-        final String element = elementName.toLowerCase();
-
-        final char[] sortedChars = sortedChars(element);
-
-        String firstChar = String.valueOf(sortedChars[0]);
-
-        if (firstAphabeticallyIsLastLetterInElement(element, firstChar)) {
-            firstChar = String.valueOf(sortedChars[1]);
-        }
-
-        final char[] lettersInElementAfterFirstChar = sortedChars(rightOfFirstChar(element, firstChar));
-        return firstChar.toUpperCase() + lettersInElementAfterFirstChar[0];
+        return possibleSymbols(elementName).first();
     }
 
     /**
      * Given an element name, find the number of distinct valid symbols for that name.
      * E.g. Zuulon -> 11
-     *
+     * <p>
      * This version utilizes an optimized technique.
      *
      * @param elementName the element to get the count from
@@ -114,7 +101,7 @@ public class ChemicalSymbol {
     /**
      * Given an element name, find the number of distinct valid symbols for that name.
      * E.g. Zuulon -> 11
-     *
+     * <p>
      * This version utilizes the Brute Froce technique.
      *
      * @param elementName the element to get the count from
@@ -125,14 +112,13 @@ public class ChemicalSymbol {
     }
 
 
-
     /*
      * Brute force version for getting all possible combinations of symbols in an element.
      * Just try all permutations of two letters against the validSymbol method.
      * The validSymbol method was already written and tested, so writing this is a no brainer.
      * The downside is that it tries all combinations of two letters which is not very efficient.
      */
-    private Set<String> possibleSymbolsBruteForce(final String elementName) {
+    private SortedSet<String> possibleSymbolsBruteForce(final String elementName) {
         final SortedSet<String> symbols = new TreeSet<>();
         for (int firstLetter = 'A'; firstLetter < ('Z' + 1); firstLetter++) {
             for (int seccondLetter = 'a'; seccondLetter < ('z' + 1); seccondLetter++) {
@@ -151,7 +137,7 @@ public class ChemicalSymbol {
      * Downside is that it does not use already tested code.
      * Upside is that it does only the bare minimum to get the results.
      */
-    private Set<String> possibleSymbols(final String elementName) {
+    private SortedSet<String> possibleSymbols(final String elementName) {
         validateElement(elementName);
 
         final String element = elementName.toLowerCase();
