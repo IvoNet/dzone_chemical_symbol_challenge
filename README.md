@@ -1,3 +1,5 @@
+[![Build Status](https://travis-ci.org/IvoNet/dzone_chemical_symbol_challenge.svg?branch=master)](https://travis-ci.org/IvoNet/dzone_chemical_symbol_challenge)
+
 # DZone - Code Challenge
 
 [Java Code Challenge: Chemical Symbol Naming-Part One](https://dzone.com/articles/java-code-challenge-chemical-symbol-naming-part-on)
