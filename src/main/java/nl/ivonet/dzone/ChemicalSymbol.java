@@ -119,6 +119,9 @@ public class ChemicalSymbol {
      * Just try all permutations of two letters against the validSymbol method.
      * The validSymbol method was already written and tested, so writing this is a no brainer.
      * The downside is that it tries all combinations of two letters which is not very efficient.
+     *
+     * By using a SortedSet it also makes it only have unique variations and be sorted
+     * alphabetically and that facilitates the firstSymbolAlphabeticaly method.
      */
     private SortedSet<String> possibleSymbolsBruteForce(final String elementName) {
         final SortedSet<String> symbols = new TreeSet<>();
@@ -139,6 +142,9 @@ public class ChemicalSymbol {
      * This done by making the elementName leading in getting the permutations.
      * Downside is that it does not use already tested code.
      * Upside is that it does only the bare minimum to get the results.
+     *
+     * By using a SortedSet it also makes it only have unique variations and be sorted
+     * alphabetically and that facilitates the firstSymbolAlphabeticaly method.
      */
     private SortedSet<String> possibleSymbols(final String elementName) {
         validateElement(elementName);
