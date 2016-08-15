@@ -122,8 +122,8 @@ public class ChemicalSymbol {
      */
     private SortedSet<String> possibleSymbolsBruteForce(final String elementName) {
         final SortedSet<String> symbols = new TreeSet<>();
-        for (int firstLetter = 'A'; firstLetter < ('Z' + 1); firstLetter++) {
-            for (int seccondLetter = 'a'; seccondLetter < ('z' + 1); seccondLetter++) {
+        for (int firstLetter = 'A'; firstLetter <= 'Z'; firstLetter++) {
+            for (int seccondLetter = 'a'; seccondLetter <= 'z'; seccondLetter++) {
                 final String symbol = "" + (char) firstLetter + (char) seccondLetter;
                 if (validSymbol(elementName, symbol)) {
                     symbols.add(symbol);
